@@ -54,9 +54,16 @@ rule_one <- function(myDFTest) {
         ## outputs
         
         myDFTest <- myDFTest %>% mutate(OOT = as.factor(OOT))
-        oneplot <- ggplot(myDFTest, aes(batch, value, color = OOT)) + geom_point()
         
-        return(list(myDFTest, oneplot))
+        #myDFTest$batch <- factor(myDFTest$batch, levels = myDFTest$batch)
+        
+        oneplot <- ggplot(myDFTest, aes(batch, value, color = OOT)) + 
+                geom_point() +
+                theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1, size = 5),
+                      axis.ticks.x = element_blank())
+        oneplotly <- ggplotly(oneplot)
+        
+        return(list(myDFTest, oneplotly))
 }
 
 
@@ -179,14 +186,9 @@ rule_five <- function(myDFTest) { ## this rule is not working
                 }
                 
                 if (sum(evalVectDown) == 5 | sum(evalVectUp) == 5){ 
-                        for (p in 1:length(littleDF$batch)) {
-                                
-                                myDFTest$OOT[grep(littleDF$batch[p], myDFTest$batch)] <- 5
-                                
-                        }
+                        
+                        myDFTest$OOT[i:(i+5)] <- 5
                 }
-                
-                
         }
         
         ## outputs

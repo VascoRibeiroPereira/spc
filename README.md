@@ -24,7 +24,7 @@ This rules may change in the number of points accepted to comply with the rules.
 
 - ~~What must be the format of input data? Check if the batches must be numeric or if it works with alpha-numeric values~~ 
 
-- Add the zones to the Shewhart Charts
+- ~~Add the zones to the Shewhart Charts~~
 
 ### To add in the *How to*:
 
