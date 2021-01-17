@@ -22,7 +22,13 @@ This rules may change in the number of points accepted to comply with the rules.
 - Tranform the functions in order for them to accept the number of points needed to comply   
 - Study ways to use the functions: shiny app? Or R Packages? Generate Reports?
 
-- What must be the format of input data? Check if the batches must be numeric or if it works with alpha-numeric values
+- ~~What must be the format of input data? Check if the batches must be numeric or if it works with alpha-numeric values~~ 
 
 - Add the zones to the Shewhart Charts
+
+### To add in the *How to*:
+
+- Input data table as CSV:    
+        - **batch**: numeric incremental value   
+        - **value**: numerical value
 
