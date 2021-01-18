@@ -30,5 +30,8 @@ This rules may change in the number of points accepted to comply with the rules.
 
 - Input data table as CSV:    
         - **batch**: numeric incremental value   
-        - **value**: numerical value
-
+        - **value**: numerical value   
+- CSV must have sep = ","    
+- First column is the **batch**   
+- Second column is the **value**   
+- Last Row: Data to query (optional) - the intention of this is to have a set of points validated that are compared to the new data input   

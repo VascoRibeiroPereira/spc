@@ -386,7 +386,7 @@ summary {
 </li>
 <li><p>Study ways to use the functions: shiny app? Or R Packages? Generate Reports?</p></li>
 <li><p><del>What must be the format of input data? Check if the batches must be numeric or if it works with alpha-numeric values</del></p></li>
-<li><p>Add the zones to the Shewhart Charts</p></li>
+<li><p><del>Add the zones to the Shewhart Charts</del></p></li>
 </ul>
 </div>
 <div id="to-add-in-the-how-to" class="section level3">
@@ -394,7 +394,15 @@ summary {
 <ul>
 <li>Input data table as CSV:<br />
 - <strong>batch</strong>: numeric incremental value<br />
-- <strong>value</strong>: numerical value</li>
+- <strong>value</strong>: numerical value<br />
+</li>
+<li>CSV must have sep = “,”<br />
+</li>
+<li>First column is the <strong>batch</strong><br />
+</li>
+<li>Second column is the <strong>value</strong><br />
+</li>
+<li>Last Row: Data to query (optional) - the intention of this is to have a set of points validated that are compared to the new data input</li>
 </ul>
 </div>
 </div>

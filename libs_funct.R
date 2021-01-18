@@ -145,11 +145,9 @@ rule_four <- function(myDFTest) {
                 littleDF <- myDFTest[i:(i+7),]
                 
                 if (sum(littleDF$value > dataMean) == 8 | sum(littleDF$value < dataMean) == 8){
-                        for (n in 1:length(littleDF$batch)) {
-                                
-                                myDFTest$OOT[grep(littleDF$batch[n], myDFTest$batch)] <- 4
-                                
-                        }
+                        
+                        
+                        myDFTest$OOT[i:(i+7)] <- 4
                 }
                 
                 
