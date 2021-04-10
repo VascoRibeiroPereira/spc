@@ -293,3 +293,35 @@ rule_eight <- function(myDFTest) {
         return(list(myDFTest, eightplot))
 }
 
+
+## Capacity indexes
+
+### Two sided
+
+#### Prep my variables
+
+dataMean <- mean(testData$value)
+sigma <- sd(testData$value)
+USL <- 525
+LSL <- 475
+
+#### Cp -> Estimates what the process is capable of producing if the process mean were to be centered between the specification limits. Assumes process output is approximately normally distributed.
+
+Cp <- (USL-LSL)/(6*sigma)
+
+#### Cpk -> Estimates what the process is capable of producing, considering that the process mean may not be centered between the specification limits. Assumes process output is approximately normally distributed.
+
+Cpk <- min(((USL-dataMean)/(3*sigma)), ((dataMean-LSL)/(3*sigma)))
+
+
+#### Conversion for sigma levels and capability indexes (long term)
+
+if (min(Cpk,Cp) < .67) {yield <- 30.85; sigmaLevel <- 1} ## Process not capable - actions necessary
+if (min(Cpk,Cp) >= .67 && min(Cpk,Cp) < 1) {yield <- 68.15; sigmaLevel <- 2} ## Process not capable - actions necessary
+if (min(Cpk,Cp) >= 1 && min(Cpk,Cp) < 1.33) {yield <- 93.32; sigmaLevel <- 3} ## Process is capable but actions are recommended
+if (min(Cpk,Cp) >= 1.33 && min(Cpk,Cp) < 1.67) {yield <- 99.38; sigmaLevel <- 4} ## Process capable
+if (min(Cpk,Cp) >= 1.67 && min(Cpk,Cp) < 2) {yield <- 99.9767; sigmaLevel <- 5} ## Process capable
+if (min(Cpk,Cp) >= 2) {yield <- 99.99966; sigmaLevel <- 6} ## Process capable
+
+
+

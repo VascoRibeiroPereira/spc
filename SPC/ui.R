@@ -1,15 +1,9 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
-library(shiny)
+source("libs.R")
+source("functions.R")
 
 ui <- fluidPage(
+    titlePanel("Statistical Process Control"),
+    hr(style="border-color: grey;"),
     sidebarLayout(
         sidebarPanel(
             fileInput("file1", "Choose CSV File",
@@ -18,11 +12,24 @@ ui <- fluidPage(
                           "text/comma-separated-values,text/plain",
                           ".csv")
             ),
-            #tags$hr(),
+            
+            p("CSV File must comply with this specifications:"),
+            tags$ol(
+                tags$li("CSV must have sep = ;"), 
+                tags$li("First column is the batch (numeric incremental value)"), 
+                tags$li("Second column is the value (numerical value)")
+            ),
             
             p("Check the box if the file have a Header:"),
             
-            checkboxInput("header", "Header", TRUE)
+            checkboxInput("header", "Header", TRUE),
+            p(""),
+            p("Created by"),
+            a("Vasco Pereira", href = "https://www.linkedin.com/in/vascoribeirosintra/"),
+            p(""),
+            p("Did you like this?"),
+            a("Buy me a coffee!", href = "https://paypal.me/theBiochemist?locale.x=en_US")
+            
         ),
         mainPanel(
             tabsetPanel(
@@ -49,6 +56,10 @@ ui <- fluidPage(
                          p("The output is an interactive Shewhart control chart, where 0 represents data value in agreement with all rules"),
                          p(""),
                          plotlyOutput("rulesplot")),
+                # tabPanel("Process capability",
+                #          numericInput("USL","Upper spec limit", value = NA),
+                #          numericInput("LSL","Lower spec limit", value = NA),
+                #          submitButton(text = "Apply Changes", icon = NULL, width = NULL)),
                 tabPanel("Data input", tableOutput("contents"))
             )
         )
